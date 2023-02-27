@@ -1,10 +1,12 @@
 <?php
-
-class Home
+class Home extends Controller
 {
-    function index(){
-        echo "Home Page";
+    function index()
+    {
+        $data['page_title'] = "Home";
+        $this->view("mini/index",$data);
     }
+
 }
 
 
