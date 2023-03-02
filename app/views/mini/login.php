@@ -101,7 +101,7 @@ body {
 }
 </style>
 <?php $this->view("mini/header", $data);?>  
-<div class="login-page">
+<div class="login-page"><h2>Login</h2>
   <div class="form">
     <form class="register-form" method = "POST">
       <input type="text" name="username" placeholder="name"/>

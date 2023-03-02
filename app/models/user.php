@@ -3,7 +3,7 @@
 class User
 {
 
-    function login($POST)
+    public function login($POST)
     {
         $DB = new Database();
         $_SESSION['error'] = "";
@@ -30,29 +30,29 @@ class User
         }
     }
 
-    function signup($POST)
+    public function signup($POST)
     {
         $DB = new Database();
         $_SESSION['error'] = "";
 
-        if (isset($POST['username']) && isset($POST['password'])&& isset($POST['email'])) {
+        if (isset($POST['username']) && isset($POST['password']) && isset($POST['email'])) {
             $arr['username'] = $POST['username'];
             $arr['password'] = $POST['password'];
             $arr['email'] = $POST['email'];
 
-            $query = "INSERT INTO users (name, password, email) VALUES (:username,:password,:email)";
+            $query = "INSERT INTO users (username, password, email) VALUES (:username,:password,:email)";
 
             $data = $DB->write($query, $arr);
-            if($data){
-                header("Location:". ROOT. "login");
+            if ($data) {
+                header("Location:" . ROOT . "login");
                 die;
             }
 
-    }else{
-         $_SESSION['error'] = "Please enter a valid username or password"; 
+        } else {
+            $_SESSION['error'] = "Please enter a valid username or password";
+        }
     }
-
-    function check_logged_in()
+    public function check_logged_in()
     {
         if (isset($_SESSION['user_url'])) {
             $arr['user_url'] = $_SESSION['user_url'];
@@ -67,10 +67,8 @@ class User
                 $_SESSION['user_url'] = $data[0]->user_address;
 
                 return true;
-            } 
+            }
         }
-        return false;   
+        return false;
     }
 }
-
-?>
