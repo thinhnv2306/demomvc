@@ -10,7 +10,7 @@ class Upload extends Controller
     function image()
     {
         $user = $this->loadModel('user');
-        if(!$user || !$user->check_logged_in()){
+        if(!$user->check_logged_in()){
             header("Location:" . ROOT . "login");
             die;
         

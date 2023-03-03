@@ -15,9 +15,11 @@ class Controller
     {
         if (file_exists("../app/models/" . $model . ".php")) {
             include "../app/models/" . $model . ".php";
-            $model = new $model();
+            return new $model();
+        }else{
+            return false;
         }
 
-        return false;
+        
     }
 }
